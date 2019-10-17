@@ -7,4 +7,9 @@ Players soon discover that the best play from both parties leads to a draw. Henc
 
 This project is made in Ruby in POO oriented Programmation Object.
 
-To play the game, clone this github on your desktop and run it in your terminal . 
+To play the game, clone this github on your desktop 
+
+-with git clone https://github.com/BSarahB/morpion.git
+and run it in your terminal , for this, 
+-Position yourself in the folder Morpion 
+-then run in your terminal the command $ ruby app.rb
