@@ -21,9 +21,9 @@ class Game
  def initialize
 
    puts "---------------------------------------------------"
-   puts"|          Bienvenue sur MorPiOOn !               |"
-   puts"|Le but du jeu est d'aligner trois de tes pions' !|"
-   puts"--------------------------------------------------"
+   puts"|                   Bienvenue  !                   |"
+   puts"|       On te presente le jeu du morpion !         |"
+   puts"---------------------------------------------------"
 
 
    puts "Quel est ton pseudo, joueur 1 ?"
@@ -53,17 +53,25 @@ def launch_game
 end
 
 end
+#ici on demande au joueur ce qu il veut renseigner
 
 def play_game(n) #grace au modulo dont le resultat sera 0 ou 1, on va pouvoir faire alterner nos joueurs
   i = n%2
 puts "#{@players[i].name}, sur quelle case tu veux jouer ton symbole #{@players[i].symbol}? "
 choice = gets.chomp.to_i #on recupere la saisie de l utilisateur et convertit en integer
-#change_value(choice, @players[i].symbol)
+
+  while @board.check_get_choice(choice) == true || @board.check_case_choice(choice) == true
+	puts "#{players[i].name} sur quelle case tu veux jouer?"
+	choice = gets.chomp.to_i
+  end
+
+@board.change_value(choice, @players[i].symbol)
+@board.print_board
+
+  end
 end
 
 
-
-end
 class Board
 
  attr_accessor :case_array
@@ -100,10 +108,33 @@ puts "-------------"
 
 end
   
-  #def change_value(choice, symbol)
- #   @case_array[choice-1].value = symbol
- # end
+  def change_value(choice, symbol)
+    @case_array[choice-1].value = symbol
+  end
+
+def check_get_choice(choice)
+  choice = choice.to_s
+  if choice.start_with?("1","2","3","4","5","6","7","8","9")
+    false
+  else
+	puts "Tu dois choisir entre 1 et 9!"
+	true
+
 end
+
+
+end
+
+
+def check_case_choice(choice)
+  if @case_array[choice-1].value == "X" || @case_array[choice-1].value == "O"
+  puts "Cette case est deja prise!"
+    true
+  else
+	false
+  end
+end
+
 class BoardCase
 	attr_accessor  :value
 
