@@ -59,6 +59,7 @@ class Game
       while @board.check_get_choice(choice) == true || @board.check_case_choice(choice) == true
       puts "#{players[i].name} sur quelle case tu veux jouer?"
       choice = gets.chomp.to_i
+      break 
       end
 
     @board.change_value(choice, @players[i].symbol)

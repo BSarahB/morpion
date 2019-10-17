@@ -9,4 +9,4 @@ require 'app/boardcase'
 require 'app/player'
 require 'app/application'
 
-Application.new.perform
+Application.new
